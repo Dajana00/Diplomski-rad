@@ -1,0 +1,16 @@
+train: C:\Users\User\Desktop\Diplomski rad\Diplomski-rad\INbreast Release 1.0/datasets/DataSetSL/images/train
+val: C:\Users\User\Desktop\Diplomski rad\Diplomski-rad\INbreast Release 1.0/datasets/DataSetSL/images/valid
+test: C:\Users\User\Desktop\Diplomski rad\Diplomski-rad\INbreast Release 1.0/datasets/DataSetSL/images/test
+
+nc: 8  # broj klasa
+
+names: [
+    "UNNAMED",
+    "",
+    "Cluster",
+    "Calcification",
+    "Mass",
+    "Distortion",
+    "Asimmetry",
+    "Spiculated Region"
+]  # ime klase
