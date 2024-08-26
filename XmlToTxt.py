@@ -20,14 +20,13 @@ if not os.path.exists(output_directory_sl):
     
 # Mapiranje tipova lezija na brojeve
 lesion_type_mapping = {
-    "UNNAMED" : 0,
-    "" : 0,
+    "UNNAMED" or "Point 1" or "Point 2": 0,
     "Cluster": 1,
-    "Calcification": 2,
+    "Calcification" or "Calcifications": 2,
     "Mass": 3,
     "Distortion": 4,
-    "Asimmetry": 5,
-    "Spiculated Region": 6
+    "Asymmetry" or "Assymetry" : 5,
+    "Spiculated Region" or "Spiculated region" : 6
 }
 
 def load_inbreast_mask(mask_path, imshape):
@@ -135,7 +134,7 @@ def display_image_with_bboxes_segm(image_path, rois):
     for points in rois:
         x, y = zip(*points)
         plt.plot(y, x, linestyle='-', linewidth=2, color='red')
-    #plt.show()
+    plt.show()
     print('Početak')
             
 
@@ -158,12 +157,12 @@ def main():
                     txt_filename = os.path.splitext(os.path.basename(xml_path))[0] + '.txt'
                     
                     txt_path = os.path.join(output_directory_dl, txt_filename)
-                    #save_detection_format(txt_path, boxes, dicom_shape, lesion_types)
+                    save_detection_format(txt_path, boxes, dicom_shape, lesion_types)
 
                     
                     txt_path = os.path.join(output_directory_sl, txt_filename)
-                    #save_segmentation_format(txt_path, rois, lesion_types, dicom_shape)
-                    display_image_with_bboxes_dect(dicom_file_path, boxes)
+                    save_segmentation_format(txt_path, rois, lesion_types, dicom_shape)
+                    #display_image_with_bboxes_dect(dicom_file_path, boxes)
                     #display_image_with_bboxes_segm(dicom_file_path, rois)
                     print(f'Obrađen fajl: {xml_filename}')
                 else:
